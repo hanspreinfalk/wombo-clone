@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +28,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#111111] text-white">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#111111] text-white">
+        {children}
+        <Script
+          src="https://echo-monorepo-widget.vercel.app/widget.js"
+          data-organization-id="org_3CPkgcKIBSJjiZkls2iN5K6BYvD"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
