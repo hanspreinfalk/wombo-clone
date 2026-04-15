@@ -31,6 +31,9 @@ export default function Home() {
   const [prompt, setPrompt] = useState("");
   const [selectedRatio, setSelectedRatio] = useState("1:1");
   const [stylesExpanded, setStylesExpanded] = useState(true);
+  const [activeTab, setActiveTab] = useState("Create");
+
+  const tabs = ["Create", "Edit", "Video", "Gallery"];
 
   return (
     <div className="flex flex-col h-screen bg-[#111111]">
@@ -40,54 +43,19 @@ export default function Home() {
           Dream
         </h1>
         <div className="flex items-center gap-1">
-          <button
-            onClick={() => {
-              try {
-                throw new Error("Create button error: Failed to initialize creation workflow");
-              } catch (e) {
-                console.error(e);
-              }
-            }}
-            className="px-5 py-1.5 rounded-full bg-purple-600 text-white text-sm font-medium"
-          >
-            Create
-          </button>
-          <button
-            onClick={() => {
-              try {
-                throw new Error("Edit button error: Edit service unavailable");
-              } catch (e) {
-                console.error(e);
-              }
-            }}
-            className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors"
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => {
-              try {
-                throw new Error("Video button error: Video module failed to load");
-              } catch (e) {
-                console.error(e);
-              }
-            }}
-            className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors"
-          >
-            Video
-          </button>
-          <button
-            onClick={() => {
-              try {
-                throw new Error("Gallery button error: Could not fetch gallery data");
-              } catch (e) {
-                console.error(e);
-              }
-            }}
-            className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors"
-          >
-            Gallery
-          </button>
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                activeTab === tab
+                  ? "bg-purple-600 text-white"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
         <button className="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
           <User size={18} />
