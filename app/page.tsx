@@ -40,16 +40,52 @@ export default function Home() {
           Dream
         </h1>
         <div className="flex items-center gap-1">
-          <button className="px-5 py-1.5 rounded-full bg-purple-600 text-white text-sm font-medium">
+          <button
+            onClick={() => {
+              try {
+                throw new Error("Create button error: Failed to initialize creation workflow");
+              } catch (e) {
+                console.error(e);
+              }
+            }}
+            className="px-5 py-1.5 rounded-full bg-purple-600 text-white text-sm font-medium"
+          >
             Create
           </button>
-          <button className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors">
+          <button
+            onClick={() => {
+              try {
+                throw new Error("Edit button error: Edit service unavailable");
+              } catch (e) {
+                console.error(e);
+              }
+            }}
+            className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors"
+          >
             Edit
           </button>
-          <button className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors">
+          <button
+            onClick={() => {
+              try {
+                throw new Error("Video button error: Video module failed to load");
+              } catch (e) {
+                console.error(e);
+              }
+            }}
+            className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors"
+          >
             Video
           </button>
-          <button className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors">
+          <button
+            onClick={() => {
+              try {
+                throw new Error("Gallery button error: Could not fetch gallery data");
+              } catch (e) {
+                console.error(e);
+              }
+            }}
+            className="px-5 py-1.5 rounded-full text-gray-400 text-sm font-medium hover:text-white transition-colors"
+          >
             Gallery
           </button>
         </div>
