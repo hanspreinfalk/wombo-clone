@@ -6,9 +6,9 @@ import {
   ChevronDown,
   Sparkles,
   Upload,
-  User,
   Crown,
 } from "lucide-react";
+import { Navbar } from "@/components/navbar";
 
 const styleCards = [
   { name: "Golden Hour v4", badge: "NEW!", premium: false, color: "#8B7355" },
@@ -31,36 +31,10 @@ export default function Home() {
   const [prompt, setPrompt] = useState("");
   const [selectedRatio, setSelectedRatio] = useState("1:1");
   const [stylesExpanded, setStylesExpanded] = useState(true);
-  const [activeTab, setActiveTab] = useState("Create");
-
-  const tabs = ["Create", "Edit", "Video", "Gallery"];
 
   return (
     <div className="flex flex-col h-screen bg-[#111111]">
-      {/* Top Navigation */}
-      <nav className="flex items-center justify-between px-6 py-3 border-b border-white/5">
-        <h1 className="text-2xl font-serif italic text-white tracking-wide">
-          Dream
-        </h1>
-        <div className="flex items-center gap-1">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                activeTab === tab
-                  ? "bg-purple-600 text-white"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-        <button className="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
-          <User size={18} />
-        </button>
-      </nav>
+      <Navbar />
 
       {/* Main Content */}
       <div className="flex flex-1 overflow-hidden">
@@ -143,10 +117,7 @@ export default function Home() {
                         className="relative aspect-square rounded-lg overflow-hidden mb-1"
                         style={{ backgroundColor: style.color }}
                       >
-                        {/* Simulated image with gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/30" />
-
-                        {/* Premium badge */}
                         {style.premium && (
                           <div className="absolute top-1 right-1">
                             <span className="text-[8px] font-bold bg-gradient-to-r from-amber-500 to-orange-500 text-white px-1.5 py-0.5 rounded-sm uppercase">
@@ -158,8 +129,6 @@ export default function Home() {
                             />
                           </div>
                         )}
-
-                        {/* NEW badge */}
                         <div className="absolute bottom-1 left-1 flex items-center gap-0.5">
                           <span className="text-[8px] font-bold bg-green-500 text-white px-1.5 py-0.5 rounded-sm uppercase">
                             NEW!
@@ -206,10 +175,7 @@ export default function Home() {
                         {ratio.label}
                       </span>
                       {ratio.premium && (
-                        <Crown
-                          size={10}
-                          className="text-gray-500"
-                        />
+                        <Crown size={10} className="text-gray-500" />
                       )}
                     </div>
                   </button>
