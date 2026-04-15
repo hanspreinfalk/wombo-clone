@@ -29,7 +29,8 @@ export function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 try {
                   throw new Error(
                     `${item.label} button error: ${item.label} service test error`
