@@ -29,16 +29,6 @@ export function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                try {
-                  throw new Error(
-                    `${item.label} button error: ${item.label} service test error`
-                  );
-                } catch (e) {
-                  console.error(e);
-                }
-              }}
               className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 isActive
                   ? "bg-purple-600 text-white"
